@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI</title>
+    <title>Razgovor s AI-jem</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,11 +60,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Chat with AI</h1>
+        <h1>Razgovor s AI-jem</h1>
         <div class="chat-box" id="chat-box"></div>
         <form id="chat-form">
-            <input type="text" id="user-input" placeholder="Type a message...">
-            <input type="submit" value="Send">
+            <input type="text" id="user-input" placeholder="Unesite poruku...">
+            <input type="submit" value="Pošalji">
         </form>
     </div>
 
@@ -105,7 +105,18 @@
         function generateBotResponse(userMessage) {
             // Ovdje možete implementirati logiku za generiranje odgovora od strane AI-a
             // U ovom primjeru, AI jednostavno ponavlja korisničku poruku
-            return `You said: "${userMessage}"`;
+            const responses = [
+                "Razumijem što si rekao.",
+                "Zanimljivo. Reci mi još o tome.",
+                "Imate li još pitanja?",
+                "Nisam siguran kako da odgovorim na to.",
+                "Što mislite o tome?",
+                "Molim vas, nastavite.",
+                "To je zanimljiva perspektiva.",
+                "Što vas točno zanima?"
+            ];
+            const randomIndex = Math.floor(Math.random() * responses.length);
+            return responses[randomIndex];
         }
     </script>
 </body>
