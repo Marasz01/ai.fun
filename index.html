@@ -4,59 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Razgovor s AI-jem</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .chat-box {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            overflow-y: scroll;
-            max-height: 400px;
-        }
-        .message {
-            margin-bottom: 15px;
-        }
-        .user-message {
-            background-color: #cce5ff;
-            padding: 10px;
-            border-radius: 5px;
-            margin-left: 50%;
-            transform: translateX(-50%);
-            max-width: 70%;
-        }
-        .bot-message {
-            background-color: #f0f0f0;
-            padding: 10px;
-            border-radius: 5px;
-            max-width: 70%;
-        }
-        input[type="text"] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        input[type="submit"] {
-            padding: 10px 20px;
-            border: none;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
+    
 </head>
 <body>
     <div class="container">
@@ -67,57 +15,5 @@
             <input type="submit" value="Pošalji">
         </form>
     </div>
-
-    <script>
-        const chatBox = document.getElementById('chat-box');
-        const chatForm = document.getElementById('chat-form');
-        const userInput = document.getElementById('user-input');
-
-        chatForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const userMessage = userInput.value;
-            appendMessage('user', userMessage);
-            sendMessageToAI(userMessage);
-            userInput.value = '';
-        });
-
-        function appendMessage(sender, message) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
-            if (sender === 'user') {
-                messageElement.innerHTML = `<div class="user-message">${message}</div>`;
-            } else {
-                messageElement.innerHTML = `<div class="bot-message">${message}</div>`;
-            }
-            chatBox.appendChild(messageElement);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function sendMessageToAI(message) {
-            // Ovdje bi se implementirao poziv API-ju za AI
-            // Za ovaj primjer koristit ćemo fiksne odgovore
-            const aiResponse = generateBotResponse(message);
-            setTimeout(() => {
-                appendMessage('bot', aiResponse);
-            }, 500);
-        }
-
-        function generateBotResponse(userMessage) {
-            // Ovdje možete implementirati logiku za generiranje odgovora od strane AI-a
-            // U ovom primjeru, AI jednostavno ponavlja korisničku poruku
-            const responses = [
-                "Razumijem što si rekao.",
-                "Zanimljivo. Reci mi još o tome.",
-                "Imate li još pitanja?",
-                "Nisam siguran kako da odgovorim na to.",
-                "Što mislite o tome?",
-                "Molim vas, nastavite.",
-                "To je zanimljiva perspektiva.",
-                "Što vas točno zanima?"
-            ];
-            const randomIndex = Math.floor(Math.random() * responses.length);
-            return responses[randomIndex];
-        }
-    </script>
 </body>
 </html>
